@@ -11,11 +11,11 @@ dockerpath="andrenoberto/ml-microservice-api"
 kubectl run ml-microservice-api --image=$dockerpath
 
 # Step 3:
+# Wait for pods to be created
+kubectl wait --for=condition=ready pod ml-microservice-api
 # List kubernetes pods
 kubectl get pods
 
 # Step 4:
-# Wait for pods to be created
-sleep 60
 # Forward the container port to a host
 kubectl port-forward ml-microservice-api 8000:80
